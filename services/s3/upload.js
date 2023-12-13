@@ -2,7 +2,7 @@ const {
     PutObjectCommand,
 } = require("@aws-sdk/client-s3");
 
-const {s3Client} = require('./s3');
+const {s3Client} = require('./client');
 
 module.exports = s3Upload =  async (file) => {
     let {originalname} = file;
@@ -12,12 +12,16 @@ module.exports = s3Upload =  async (file) => {
 
     const currentTime = new Date().getTime();
 
+    const filename = `${currentTime}_${originalname}`;
+
     const data = {
         Bucket: `${process.env.S3_BUCKET}`,
-        Key: `${currentTime}_${originalname}`,
+        Key: filename,
         Body: buf,
         ACL: "public-read-write"
     };
+
+    console.log("uploaded filename: " + filename);
     const result = await s3Client.send(new PutObjectCommand(data));
 
     try {
