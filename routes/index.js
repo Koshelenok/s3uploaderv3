@@ -30,7 +30,9 @@ router.post('/upload', attach.single('file'), (req, res) => {
         .then((url) => {
             res.redirect("/")
         })
-        .catch((err) => res.status(500).send(err));
+        .catch((err) => {
+            res.status(500).send('Something went wrong. ' + err)
+        });
 });
 
 module.exports = router;

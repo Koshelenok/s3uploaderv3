@@ -22,10 +22,11 @@ module.exports = S3_upload =  async (file) => {
         Body: buf,
         ACL: "public-read-write"
     };
+    const result = await s3Client.send(new PutObjectCommand(data));
+
     try {
-        const result = await s3Client.send(new PutObjectCommand(data));
         return result;
     } catch(error) {
-        console.log("Error", err);
+        throw new Error(error);
     }
 };
