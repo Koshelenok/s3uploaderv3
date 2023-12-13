@@ -1,4 +1,5 @@
 # s3uploaderv2
 
 - [x] upload
-- [ ] delete
+- [x] delete
+- [x] read
