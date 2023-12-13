@@ -2,7 +2,7 @@ var express = require('express');
 const multer = require('multer');
 var router = express.Router();
 const path = require('path');
-const upload = require('../upload');
+const s3Upload = require('../upload');
 
 const storage = multer.memoryStorage();
 const fileFilter = (req, file, cb) => {
@@ -26,8 +26,9 @@ router.get('/', (req, res) => {
 router.post('/upload', attach.single('file'), (req, res) => {  
     const file = req.file;
 
-    upload(file)
-        .then((url) => {
+    s3Upload(file)
+        .then((data) => {
+            console.log("success upload");
             res.redirect("/")
         })
         .catch((err) => {

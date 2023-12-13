@@ -3,7 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
-const upload = require('./upload');
 
 var indexRouter = require('./routes/index');
 

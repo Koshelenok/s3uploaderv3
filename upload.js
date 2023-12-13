@@ -8,7 +8,7 @@ const s3Client = new S3Client({
     endpoint: process.env.S3_ENDPOINT
 });
 
-module.exports = S3_upload =  async (file) => {
+module.exports = s3Upload =  async (file) => {
     let {originalname} = file;
     originalname = Buffer.from(file.originalname, 'latin1').toString('utf8')
 
