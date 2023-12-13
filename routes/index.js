@@ -2,7 +2,7 @@ var express = require('express');
 const multer = require('multer');
 var router = express.Router();
 const path = require('path');
-const s3Upload = require('../upload');
+const s3Upload = require('../services/upload');
 
 const storage = multer.memoryStorage();
 const fileFilter = (req, file, cb) => {

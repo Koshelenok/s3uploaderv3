@@ -1,2 +1,4 @@
 # s3uploaderv2
-# s3uploaderv3
+
+- [x] upload
+- [ ] delete

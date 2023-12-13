@@ -1,12 +1,8 @@
 const {
-    S3Client, 
     PutObjectCommand,
 } = require("@aws-sdk/client-s3");
 
-const s3Client = new S3Client({
-    region: process.env.S3_REGION,
-    endpoint: process.env.S3_ENDPOINT
-});
+const {s3Client} = require('./s3');
 
 module.exports = s3Upload =  async (file) => {
     let {originalname} = file;
