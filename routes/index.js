@@ -20,7 +20,7 @@ router.get('/read', attach.single('file'), (req, res) => {
 
     s3Read(filename)
         .then((data) => {
-            console.log("success read", data.VersionId);
+            console.log("success read");
             data.Body.pipe(res);
         })
         .catch((err) => {
